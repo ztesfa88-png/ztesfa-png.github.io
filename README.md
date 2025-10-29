@@ -1,1 +1,169 @@
-# ztesfa-png.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Lab Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      gap: 20px;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #3498db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+      color: white;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .user-info {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-list li {
+      margin-bottom: 8px;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+
+    .nav-list a:hover {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .main-content {
+      flex: 1;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    .profile-title {
+      font-size: 2em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+
+    .profile-text {
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+
+    <div class="logo">
+      <img src="image2.jpg" alt="My Picture">
+    </div>
+    <div class="user-info">Zelalem Tesfa  NRS/0868/16</div>
+  </header>
+
+  <div class="container">
+
+    <aside class="sidebar">
+      <h3>My Lab Practices & Assignments</h3>
+      <ul class="nav-list">
+        <li><a href="page1.html">Lab 1</a></li>
+        <li><a href="page2.html">Lab 2</a></li>
+        <li><a href="page3.html">Lab 3</a></li>
+        <li><a href="#assn1">Assignment 1</a></li>
+        <li><a href="#lab4">Lab 4</a></li>
+        <li><a href="#more">...</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1 class="profile-title">My Profile</h1>
+      <div class="profile-text">
+        <p>Welcome to my personal academic portfolio! Here you’ll find all my completed labs and assignments organized for easy access.</p>
+        <p>I’m passionate about learning and applying new skills in practical settings. Each project represents a step forward in my journey as a student and future professional.</p>
+        <p>Feel free to explore the links on the left to view detailed reports, code, or documentation for each assignment.</p><br>
+        <p style="float: right;">Contact me at<b>:</b><a href="mailto:ztesfa88@gmail.com"><i>ztesfa88@gmail.com</i></a></p>
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
