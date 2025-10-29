@@ -145,10 +145,10 @@
       <h3>My Lab Practices & Assignments</h3>
       <ul class="nav-list">
         <li><a href="page1.html">Lab 1</a></li>
-        <li><a href="page2.html">Lab 1</a></li>
+        <li><a href="page2.html">Lab 2</a></li>
         <li><a href="page3.html">Lab 3</a></li>
-        <li><a href="#assn1">Assignment 1</a></li>
-        <li><a href="#lab4">Lab 4</a></li>
+        <li><a href="wku.html">Assignment 1</a></li>
+        <li><a href="wku1.html">Lab 4</a></li>
         <li><a href="#more">...</a></li>
       </ul>
     </aside>
