@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML: Semantic Elements</title>
+  <style>
+    body { font-family: Arial; margin: 0; background: #eee; }
+    header, nav, main, aside, footer, section, article {
+      padding: 15px;
+      margin: 10px;
+      border-radius: 6px;
+    }
+    header { background: #2c3e50; color: white; text-align: center; }
+    nav { background: #3498db; color: white; }
+    main { background: white; display: flex; gap: 20px; }
+    article { background: #f8f9fa; flex: 3; }
+    aside { background: #ecf0f1; flex: 1; }
+    footer { background: #7f8c8d; color: white; text-align: center; }
+    section { background: #e8f4fc; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Website</h1>
+    <p>Using Semantic HTML5 Elements</p>
+  </header>
+
+  <nav>
+    <strong>Navigation:</strong>
+    <a href="#" style="color:white; margin-right:15px;">Home</a>
+    <a href="#" style="color:white; margin-right:15px;">About</a>
+    <a href="#" style="color:white;">Contact</a>
+  </nav>
+
+  <main>
+    <article>
+      <h2>Article Title</h2>
+      <p>This is the main content of the page.</p>
+      
+      <section>
+        <h3>Section 1</h3>
+        <p>Organized content within an article.</p>
+      </section>
+      
+      <section>
+        <h3>Section 2</h3>
+        <p>Another section.</p>
+      </section>
+    </article>
+
+    <aside>
+      <h3>Related Links</h3>
+      <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Zelalem Tesfa. All rights reserved.</p>
+  </footer>
+</body>
+</html>

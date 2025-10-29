@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML: Tables</title>
+  <style>
+    body { font-family: Arial; max-width: 800px; margin: 20px auto; padding: 0 20px; }
+    header { text-align: center; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #f39c12; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #fef0d9;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #fdf6f0;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <caption>Student Grades</caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Zelalem Tesfa</td>
+        <td>Web Development</td>
+        <td>A+</td>
+      </tr>
+      <tr>
+        <td>Abdlmejid Kasim</td>
+        <td>Database Systems</td>
+        <td>B+</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">Average</td>
+        <td>B+</td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>
