@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Page 1 - Two Columns</title>
+  <title>Page 2 - Three Columns</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,16 +13,16 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f9f9f9;
       color: #333;
     }
 
     nav {
-      background-color: #2c3e50;
-      overflow: hidden;
+      background-color: #2980b9;
     }
     nav ul {
       list-style: none;
+      overflow: hidden; 
     }
     nav li {
       float: left;
@@ -35,7 +35,22 @@
       text-decoration: none;
     }
     nav li a:hover {
-      background-color: #1a252f;
+      background-color: #1c5980;
+    }
+
+    @media (max-width: 768px) {
+      nav li {
+        float: none;
+        width: 100%;
+      }
+
+      .left,
+      .center,
+      .right {
+        width: 100%;
+        min-height: auto;
+        padding: 15px;
+      }
     }
 
     .container {
@@ -45,29 +60,24 @@
       overflow: hidden; 
     }
 
-    .left, .right {
+    .left, .center, .right {
       float: left;
       padding: 20px;
-      min-height: 300px;
-      width: 50%;
+      min-height: 600px;
+      width: 33.3333%;
     }
 
-    .left {
-      background-color: #ecf0f1;
-    }
-
-    .right {
-      background-color: #bdc3c7;
-    }
+    .left   { background-color: #d5f5e3; }
+    .center { background-color: #f9e79f; }
+    .right  { background-color: #f5b7b1; }
 
     img {
-      max-width: 100%; /* Changed from 50% → 100% to fit column on all screens */
+      max-width: 100%;
       height: auto;
       display: block;
-      margin: 10px 0;
+      margin: 0;
     }
 
-    /* Clear floats to prevent container collapse */
     .container::after {
       content: "";
       display: table;
@@ -76,15 +86,27 @@
   </style>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 
   <div class="container">
     <div class="left">
-      <h2>Left Column</h2>
-      <img src="image.jpg" alt="">
+      <h2>Left</h2>
+      <p>Content for the left column.</p>
+    </div>
+    <div class="center">
+      <h2>Center</h2>
+      <p>Main content goes here.</p>
     </div>
     <div class="right">
-      <h2>Right Column</h2>
-      <img src="image1.jpg" alt="">
+      <h2>Right</h2>
+      <p>Content for the right column.</p>
     </div>
   </div>
 </body>
