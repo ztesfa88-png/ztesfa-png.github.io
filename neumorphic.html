@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neumorphic Login & Signup Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background 0.3s ease;
+    }
+
+    .dark-mode {
+      background: #121212;
+    }
+
+    .container {
+      width: 350px;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .container {
+      background: #1e1e1e;
+      box-shadow: 20px 20px 60px #141414, -20px -20px 60px #282828;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 24px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .toggle-btn {
+      color: #fff;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, #6e45e2, #88d3ce);
+      color: white;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.1), -5px -5px 10px rgba(255,255,255,0.5);
+    }
+
+    .dark-mode .tab.active {
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.5), -5px -5px 10px rgba(255,255,255,0.1);
+    }
+
+    .tab:not(.active) {
+      background: #f0f0f0;
+      color: #333;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.5);
+    }
+
+    .dark-mode .tab:not(.active) {
+      background: #2a2a2a;
+      color: #ddd;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -2px -2px 5px rgba(255,255,255,0.1);
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .form-title {
+      color: #fff;
+    }
+
+    .input-group {
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 50px;
+      background: #f0f0f0;
+      font-size: 16px;
+      color: #333;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.5);
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .input-group input {
+      background: #2a2a2a;
+      color: #fff;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -2px -2px 5px rgba(255,255,255,0.1);
+    }
+
+    .input-group input:focus {
+      outline: none;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2), inset -2px -2px 5px rgba(255,255,255,0.7);
+    }
+
+    .dark-mode .input-group input:focus {
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.7), inset -2px -2px 5px rgba(255,255,255,0.3);
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .input-group i {
+      color: #aaa;
+    }
+
+    .input-group .toggle-password {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #666;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .input-group .toggle-password {
+      color: #aaa;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #6e45e2, #88d3ce);
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.1), -5px -5px 10px rgba(255,255,255,0.5);
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .btn {
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.5), -5px -5px 10px rgba(255,255,255,0.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.2), -5px -5px 15px rgba(255,255,255,0.7);
+    }
+
+    .dark-mode .btn:hover {
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.7), -5px -5px 15px rgba(255,255,255,0.3);
+    }
+
+    .social-login {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social-login p {
+      color: #666;
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .social-login p {
+      color: #ddd;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1), -2px -2px 5px rgba(255,255,255,0.5);
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .social-icon {
+      background: #2a2a2a;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.5), -2px -2px 5px rgba(255,255,255,0.1);
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2), -2px -2px 10px rgba(255,255,255,0.7);
+    }
+
+    .dark-mode .social-icon:hover {
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.7), -2px -2px 10px rgba(255,255,255,0.3);
+    }
+
+    .social-icon i {
+      font-size: 20px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .social-icon i {
+      color: #ddd;
+    }
+
+    /* Hide inactive form */
+    .form-content {
+      display: none;
+    }
+
+    .form-content.active {
+      display: block;
+    }
+
+    /* Icons */
+    .icon {
+      font-family: 'Font Awesome 5 Free';
+      font-weight:900;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="toggle-btn" id="darkModeToggle">
+      <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="login">Login</div>
+      <div class="tab" data-tab="signup">Sign Up</div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="form-content active" id="loginForm">
+      <h2 class="form-title">Login</h2>
+      <div class="input-group">
+        <i class="fas fa-envelope icon"></i>
+        <input type="email" placeholder="Email" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock icon"></i>
+        <input type="password" placeholder="Password" id="loginPassword" />
+        <i class="fas fa-eye toggle-password" id="toggleLoginPassword"></i>
+      </div>
+      <button class="btn">Login</button>
+      <div class="social-login">
+        <p>Or continue with:</p>
+        <div class="social-icons">
+          <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+          <div class="social-icon"><i class="fab fa-google"></i></div>
+          <div class="social-icon"><i class="fab fa-github"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="form-content" id="signupForm">
+      <h2 class="form-title">Sign Up</h2>
+      <div class="input-group">
+        <i class="fas fa-user icon"></i>
+        <input type="text" placeholder="Name" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope icon"></i>
+<input type="email" placeholder="Email" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock icon"></i>
+        <input type="password" placeholder="Password" id="signupPassword" />
+        <i class="fas fa-eye toggle-password" id="toggleSignupPassword"></i>
+      </div>
+      <button class="btn">Register</button>
+      <div class="social-login">
+        <p>Or continue with:</p>
+        <div class="social-icons">
+          <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+          <div class="social-icon"><i class="fab fa-google"></i></div>
+          <div class="social-icon"><i class="fab fa-github"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.tab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        if (tab.dataset.tab === 'login') {
+          loginForm.classList.add('active');
+          signupForm.classList.remove('active');
+        } else {
+          signupForm.classList.add('active');
+          loginForm.classList.remove('active');
+        }
+      });
+    });
+
+    // Password visibility toggle
+    const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+    const loginPassword = document.getElementById('loginPassword');
+    const toggleSignupPassword = document.getElementById('toggleSignupPassword');
+    const signupPassword = document.getElementById('signupPassword');
+
+    toggleLoginPassword.addEventListener('click', () => {
+      const type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      loginPassword.setAttribute('type', type);
+      toggleLoginPassword.classList.toggle('fa-eye');
+      toggleLoginPassword.classList.toggle('fa-eye-slash');
+    });
+
+    toggleSignupPassword.addEventListener('click', () => {
+      const type = signupPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      signupPassword.setAttribute('type', type);
+      toggleSignupPassword.classList.toggle('fa-eye');
+      toggleSignupPassword.classList.toggle('fa-eye-slash');
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const icon = darkModeToggle.querySelector('i');
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+  </script>
+</body>
+</html>
