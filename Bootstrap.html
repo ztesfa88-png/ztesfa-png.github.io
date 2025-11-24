@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Assignment - Zelalem Tesfa | Wolkite University</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --success: #43e97b;
+            --info: #4facfe;
+            --warning: #fee140;
+            --danger: #f5576c;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+        }
+
+        .university-logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 8px;
+            background: url('wku.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            border-radius: 20px;
+            background: url('wku.jpg') center/cover no-repeat;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-badge {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .university-badge {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .bg-gradient-1 { background: var(--gradient-1); }
+        .bg-gradient-2 { background: var(--gradient-2); }
+        .bg-gradient-3 { background: var(--gradient-3); }
+        .bg-gradient-4 { background: var(--gradient-4); }
+        .bg-gradient-5 { background: var(--gradient-5); }
+
+        /* Buttons */
+        .btn-gradient {
+            background: var(--gradient-2);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-gradient:hover::before {
+            left: 100%;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        /* Assignment Info */
+        .assignment-info {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Code Display */
+        .code-preview {
+            background: #1e1e1e;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #2d2d2d;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .code-preview::after {
+            content: '● ● ●';
+            position: absolute;
+            top: 12px;
+            left: 15px;
+            color: #ff5f56;
+            font-size: 12px;
+        }
+
+        .code-content {
+            margin-top: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Advantages Table */
+        .advantages-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .advantages-table th {
+            background: var(--gradient-1);
+            color: white;
+            font-weight: 600;
+            padding: 1.5rem;
+            border: none;
+        }
+
+        .advantages-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Demo Section */
+        .demo-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .demo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: var(--gradient-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            .section-title { font-size: 2rem; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <div class="university-logo"></div>
+                Bootstrap Assignment
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#introduction">Introduction</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Components
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#components">Showcase</a></li>
+                            <li><a class="dropdown-item" href="#grid">Grid System</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center hero-content">
+                    <div class="hero-logo mx-auto"></div>
+                    <div class="logo-badge">
+                        <i class="bi bi-mortarboard-fill me-2"></i>WOLKITE UNIVERSITY
+                    </div>
+                    <div class="university-badge">
+                        <h6 class="mb-1"><i class="bi bi-building me-2"></i>College of Computing and Informatics</h6>
+                        <small>Department of Software Engineering</small>
+                    </div>
+                    <h1>Bootstrap Framework Assignment</h1>
+                    <p class="lead mb-4">Web Design and Programming - Individual Assignment</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="#introduction" class="btn-gradient">
+                            <i class="bi bi-book me-2"></i>View Assignment
+                        </a>
+                        <a href="#demo" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-code-slash me-2"></i>See Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assignment Info -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="assignment-info fade-in">
+                        <h3 class="text-center mb-4"><i class="bi bi-info-circle me-2"></i>Assignment Details</h3>
+                        <div class="info-item">
+                            <span class="info-label">Student Name:</span>
+                            <span>Zelalem Tesfa</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Student ID:</span>
+                            <span>NSR/0868/16</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Course Title:</span>
+                            <span>Web Design And Programming</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Assignment Title:</span>
+                            <span>Bootstrap Framework</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Submitted to:</span>
+                            <span>Mr. Eyuel</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Submission Date:</span>
+                            <span>17/03/2018</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section id="introduction" class="section">
+        <div class="container">
+            <h2 class="section-title text-white">Introduction to Bootstrap</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-info-circle me-2"></i>What is Bootstrap?</h4>
+                        <p class="text-white-50">Bootstrap is a free, open-source front-end framework developed by Twitter (now X Corp.) and first released in 2011. Its primary purpose is to streamline and standardize the development of responsive, mobile-first websites and web applications.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-graph-up me-2"></i>Global Impact</h4>
+                        <p class="text-white-50">Over time, Bootstrap has become one of the most widely used CSS frameworks globally—powering millions of websites due to its ease of use, comprehensive component library, and strong community support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section id="features" class="section" style="background: rgba(255,255,255,0.1);">
+        <div class="container">
+            <h2 class="section-title text-white">Core Features of Bootstrap</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon bg-gradient-1">
+                            <i class="bi bi-grid-3x3-gap-fill"></i>
+                        </div>
+                        <h5>Responsive Grid System</h5>
+                        <p class="text-muted">12-column, mobile-first grid system based on Flexbox with predefined classes like col-sm-*, col-md-*, col-lg-*.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon bg-gradient-2">
+                            <i class="bi bi-palette-fill"></i>
+                        </div>
+                        <h5>Pre-styled Components</h5>
+                        <p class="text-muted">Ready-to-use UI components including navigation bars, buttons, cards, modals, alerts, and forms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon bg-gradient-3">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h5>JavaScript Plugins</h5>
+                        <p class="text-muted">Interactive elements powered by lightweight, dependency-free JavaScript plugins without jQuery.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon bg-gradient-4">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <h5>Utility-First Approach</h5>
+                        <p class="text-muted">Utility classes like text-center, bg-primary, d-flex enable rapid prototyping without custom CSS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title text-white">Advantages of Using Bootstrap</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="advantages-table fade-in">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Advantage</th>
+                                    <th>Explanation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Development Speed</strong></td>
+                                    <td>Reduces time spent on layout and styling; allows developers to focus on logic and content.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cross-Browser Compatibility</strong></td>
+                                    <td>Ensures consistent rendering across modern browsers (Chrome, Firefox, Safari, Edge).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Responsive by Default</strong></td>
+                                    <td>All components are built with mobile responsiveness in mind.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Extensive Documentation</strong></td>
+                                    <td>Official documentation is clear, well-organized, and includes live examples.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Accessibility Support</strong></td>
+                                    <td>Components follow WAI-ARIA standards, improving usability for assistive technologies.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="section" style="background: rgba(255,255,255,0.1);">
+        <div class="container">
+            <h2 class="section-title text-white">Practical Demonstration</h2>
+            <div class="text-center mb-5">
+                <p class="lead text-white-50">Responsive Portfolio Card Grid with Modern Design</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="demo-card fade-in">
+                        <img src="https://picsum.photos/400/200?random=1" alt="E-Commerce Platform">
+                        <div class="p-4">
+                            <h5>E-Commerce Platform</h5>
+                            <p class="text-muted">Modern online shopping experience with secure payments and responsive design.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="demo-card fade-in">
+                        <img src="https://picsum.photos/400/200?random=2" alt="Portfolio Website">
+                        <div class="p-4">
+                            <h5>Portfolio Website</h5>
+                            <p class="text-muted">Creative portfolio showcasing beautiful design work with Bootstrap components.</p>
+                            <a href="#" class="btn btn-success">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="demo-card fade-in">
+                        <img src="https://picsum.photos/400/200?random=3" alt="Mobile App">
+                        <div class="p-4">
+                            <h5>Mobile App Interface</h5>
+                            <p class="text-muted">Cross-platform mobile application with great UX and Bootstrap styling.</p>
+                            <a href="#" class="btn btn-info">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Preview -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="code-preview fade-in">
+                        <div class="code-content">
+                            <div style="color: #66d9ef;">&lt;div</div>
+                            <div style="margin-left: 20px; color: #a6e22e;">class=<span style="color: #e6db74;">"row g-4"</span>&gt;</div>
+                            <div style="margin-left: 40px; color: #66d9ef;">&lt;div</div>
+                            <div style="margin-left: 60px; color: #a6e22e;">class=<span style="color: #e6db74;">"col-lg-4 col-md-6"</span>&gt;</div>
+                            <div style="margin-left: 80px; color: #66d9ef;">&lt;div</div>
+                            <div style="margin-left: 100px; color: #a6e22e;">class=<span style="color: #e6db74;">"card h-100"</span>&gt;</div>
+                            <div style="margin-left: 120px; color: #f8f8f2;">Bootstrap Card Content</div>
+                            <div style="margin-left: 100px; color: #66d9ef;">&lt;/div&gt;</div>
+                            <div style="margin-left: 60px; color: #66d9ef;">&lt;/div&gt;</div>
+                            <div style="margin-left: 20px; color: #66d9ef;">&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Components Showcase -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title text-white">Bootstrap Components Showcase</h2>
+            <div class="text-center mb-5">
+                <p class="lead text-white-50">Interactive examples of Bootstrap's most popular components</p>
+            </div>
+
+            <!-- Alerts & Badges -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-exclamation-triangle me-2"></i>Alerts & Badges</h4>
+                        <div class="alert alert-primary d-flex align-items-center mb-3" role="alert">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            <div>This is a primary alert with Bootstrap styling!</div>
+                        </div>
+                        <div class="alert alert-success d-flex align-items-center mb-3" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <div>Success! Your form has been submitted.</div>
+                        </div>
+                        <div class="mb-3">
+                            <span class="badge bg-primary me-2">Primary</span>
+                            <span class="badge bg-success me-2">Success</span>
+                            <span class="badge bg-warning text-dark me-2">Warning</span>
+                            <span class="badge bg-danger">Danger</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-ui-checks me-2"></i>Buttons & Button Groups</h4>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary me-2">Primary</button>
+                            <button type="button" class="btn btn-success me-2">Success</button>
+                            <button type="button" class="btn btn-warning me-2">Warning</button>
+                            <button type="button" class="btn btn-danger">Danger</button>
+                        </div>
+                        <div class="btn-group mb-3" role="group">
+                            <button type="button" class="btn btn-outline-primary">Left</button>
+                            <button type="button" class="btn btn-outline-primary">Middle</button>
+                            <button type="button" class="btn btn-outline-primary">Right</button>
+                        </div>
+                        <div>
+                            <button class="btn btn-lg btn-gradient">Large Button</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bars & Spinners -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-bar-chart me-2"></i>Progress Bars</h4>
+                        <div class="mb-3">
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-primary" style="width: 75%">75%</div>
+                            </div>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-success" style="width: 50%">50%</div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" style="width: 90%">90%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-arrow-clockwise me-2"></i>Spinners & Loading</h4>
+                        <div class="d-flex gap-3 align-items-center mb-3">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <div class="spinner-border spinner-border-sm text-warning" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                            Loading...
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal & Dropdown Demo -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-window me-2"></i>Modal Example</h4>
+                        <p class="text-white-50 mb-3">Click the button below to launch a Bootstrap modal.</p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-box-arrow-up-right me-2"></i>Launch Modal
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-3"><i class="bi bi-menu-down me-2"></i>Dropdown Menu</h4>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-gear me-2"></i>Settings
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Components -->
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="glass-card fade-in">
+                        <h4 class="text-white mb-4"><i class="bi bi-form me-2"></i>Form Components</h4>
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label text-white">First Name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label text-white">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label text-white">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="country" class="form-label text-white">Country</label>
+                                <select class="form-select" id="country">
+                                    <option selected>Choose...</option>
+                                    <option value="et">Ethiopia</option>
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terms">
+                                    <label class="form-check-label text-white" for="terms">
+                                        I agree to the terms and conditions
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-gradient">
+                                    <i class="bi bi-check-circle me-2"></i>Submit Form
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Grid System Demo -->
+    <section class="section" style="background: rgba(255,255,255,0.1);">
+        <div class="container">
+            <h2 class="section-title text-white">Bootstrap Grid System</h2>
+            <div class="text-center mb-5">
+                <p class="lead text-white-50">Responsive 12-column grid system demonstration</p>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-12">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-12 (Full Width)</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-6">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-6</h6>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-6</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-4">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-4</h6>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-4</h6>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-4</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-lg-3 col-md-6</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-lg-3 col-md-6</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-lg-3 col-md-6</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card text-center">
+                        <h6 class="text-white mb-0">col-lg-3 col-md-6</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="text-center mb-5">
+                <p class="lead">Contact information for Zelalem Tesfa</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                        <h6>Email</h6>
+                        <p>ztesfa@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <h6>Phone</h6>
+                        <p>+251 966806864</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        <h6>Location</h6>
+                        <p>Woliso, Ethiopia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-info-circle me-2"></i>Bootstrap Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a Bootstrap modal component demonstrating interactive JavaScript functionality.</p>
+                    <div class="alert alert-info">
+                        <i class="bi bi-lightbulb me-2"></i>
+                        Modals are built with HTML, CSS, and JavaScript. They're positioned over everything else in the document.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <div class="university-logo me-3"></div>
+                        <div>
+                            <h5 class="mb-0">Bootstrap Assignment</h5>
+                            <p class="text-muted mb-0">Wolkite University - Software Engineering Department</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2024 Zelalem Tesfa. Academic Assignment.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
