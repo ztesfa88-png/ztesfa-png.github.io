@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wolkite University - Excellence in Education</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0d3b66;
-            --secondary: #f4d35e;
-            --accent: #ee964b;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --green: #2a9d8f;
-            --transition: all 0.3s ease;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #0ea5e9;
+            --accent: #f97316;
+            --success: #059669;
+            --gold: #fbbf24;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gradient-1: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            --gradient-2: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            --gradient-3: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            --gradient-hero: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #0ea5e9 100%);
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.18);
+            --shadow-xl: 0 24px 64px rgba(0,0,0,0.24);
         }
         
         * {
@@ -23,11 +35,38 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            background-color: #f5f7fa;
+            background-color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 76px;
+        }
+        
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(30, 64, 175, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.04) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
         }
         
         h1, h2, h3, h4, h5 {
@@ -45,144 +84,324 @@
         
         .btn {
             display: inline-block;
-            padding: 12px 28px;
-            background: var(--primary);
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
             transition: var(--transition);
-            border: 2px solid var(--primary);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
         }
         
         .btn:hover {
-            background: transparent;
-            color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(30, 64, 175, 0.6);
         }
         
-        .btn-secondary {
-            background: var(--secondary);
-            color: var(--primary);
-            border-color: var(--secondary);
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .btn-secondary:hover {
+        .btn-outline {
             background: transparent;
-            color: var(--secondary);
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
+            border: 2px solid white;
+            display: inline-flex;
             align-items: center;
-            padding: 15px 0;
+            gap: 10px;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 60px;
-            margin-right: 15px;
-        }
-        
-        .logo h1 {
-            font-size: 1.5rem;
+        .btn-outline:hover {
+            background: white;
             color: var(--primary);
-            margin: 0;
         }
         
-        .logo span {
-            color: var(--secondary);
+        .btn-white {
+            background: white;
+            color: var(--primary);
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
+        .btn-white:hover {
+            background: var(--light);
+            transform: translateY(-3px);
         }
         
-        nav ul li {
-            margin-left: 25px;
+        .btn-outline-white {
+            background: transparent;
+            border: 2px solid white;
         }
         
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: var(--transition);
+        .btn-outline-white:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-outline-large {
+            padding: 18px 45px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .btn-outline-large:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand h5 {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link {
+            color: var(--dark) !important;
+            transition: color 0.3s ease;
             position: relative;
         }
         
-        nav ul li a:hover {
-            color: var(--primary);
+        .nav-link:hover {
+            color: var(--primary) !important;
         }
         
-        nav ul li a::after {
+        .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
             background: var(--primary);
-            transition: var(--transition);
+            transition: width 0.3s ease;
         }
         
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .nav-link:hover::after {
+            width: 80%;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(13, 59, 102, 0.85), rgba(13, 59, 102, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.97) 0%, rgba(14, 165, 233, 0.93) 100%), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             color: white;
-            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-badge i {
+            color: var(--gold);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: left;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+        
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .hero-image {
+            position: relative;
+            height: 500px;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            color: var(--dark);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .floating-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .card-1 {
+            top: 50px;
+            left: 0;
+            animation-delay: 0s;
+        }
+        
+        .card-2 {
+            top: 200px;
+            right: 50px;
+            animation-delay: 2s;
+        }
+        
+        .card-3 {
+            bottom: 50px;
+            left: 80px;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: moveBackground 20s linear infinite;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
         
         .hero-content {
             max-width: 700px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero h2 {
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            animation: fadeInUp 1s ease-out 0.2s both;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            line-height: 1.8;
+            font-weight: 300;
         }
         
         .hero-btns {
             display: flex;
-            gap: 15px;
+            gap: 20px;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
         
         /* Section Styling */
@@ -196,22 +415,29 @@
         }
         
         .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             position: relative;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
         
         .section-header h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
         }
         
         .section-header p {
@@ -233,15 +459,47 @@
         
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            transform: perspective(1000px) rotateY(-8deg);
+            transition: var(--transition);
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) border-box;
+        }
+        
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.05);
+            box-shadow: 0 25px 50px rgba(30, 64, 175, 0.3);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.3) 0%, rgba(14, 165, 233, 0.2) 100%);
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover::before {
+            opacity: 0;
         }
         
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.1);
         }
         
         /* Programs Section */
@@ -253,25 +511,78 @@
         
         .program-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .program-card:hover::before {
+            opacity: 1;
         }
         
         .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
         }
         
         .program-img {
-            height: 200px;
-            background: var(--primary);
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .program-img::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%),
+                radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+        
+        .program-img::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .program-content {
@@ -279,8 +590,12 @@
         }
         
         .program-content h3 {
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 15px;
+            font-size: 1.5rem;
         }
         
         /* News Section */
@@ -292,17 +607,49 @@
         
         .news-card {
             background: white;
-            border-radius: 10px;
-
-overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+        
+        .news-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-15px) rotate(-2deg);
+            box-shadow: var(--shadow-xl);
         }
         
         .news-img {
-            height: 200px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            height: 250px;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(14, 165, 233, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-card:hover .news-img {
+            transform: scale(1.15);
         }
         
         .news-content {
@@ -310,10 +657,23 @@ overflow: hidden;
         }
         
         .news-date {
-            color: var(--accent);
-            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
             margin-bottom: 10px;
-            display: block;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+        
+        .news-content h3 {
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .news-card:hover .news-content h3 {
+            color: var(--primary);
         }
         
         /* Contact Section */
@@ -341,9 +701,21 @@ overflow: hidden;
         .contact-form {
             flex: 1;
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
         }
         
         .form-group {
@@ -359,10 +731,20 @@ overflow: hidden;
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-family: 'Roboto', sans-serif;
+            transition: var(--transition);
+            background: #f8f9fa;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
         }
         
         .form-group textarea {
@@ -372,9 +754,22 @@ overflow: hidden;
         
         /* Footer */
         footer {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, #0d1b3e 100%);
             color: white;
             padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 213, 79, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 111, 0, 0.05) 0%, transparent 50%);
         }
         
         .footer-content {
@@ -385,10 +780,14 @@ overflow: hidden;
         }
         
         .footer-col h3 {
-            color: var(--secondary);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            font-size: 1.3rem;
         }
         
         .footer-col h3::after {
@@ -396,9 +795,10 @@ overflow: hidden;
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--secondary);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--accent) 100%);
+            border-radius: 2px;
         }
         
         .footer-col ul {
@@ -416,7 +816,7 @@ overflow: hidden;
         }
         
         .footer-col ul li a:hover {
-            color: var(--secondary);
+            color: var(--gold);
             padding-left: 5px;
         }
         
@@ -430,20 +830,43 @@ overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%);
+            transform: scale(0);
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+        
+        .social-links a:hover::before {
+            transform: scale(1);
+        }
+        
+        .social-links a i {
+            position: relative;
+            z-index: 1;
         }
         
         .social-links a:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-5px);
-
-}
+            color: var(--dark);
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.5);
+        }
         
         .copyright {
             text-align: center;
@@ -518,140 +941,872 @@ overflow: hidden;
                 font-size: 2rem;
             }
         }
+        
+        /* New Sections Styles */
+        .section-header-new {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .section-header-new h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-header-new p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* About New Section */
+        .about-new {
+            padding: 100px 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-images {
+            position: relative;
+        }
+        
+        .about-img-main {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .about-img-main img {
+            width: 100%;
+            display: block;
+        }
+        
+        .about-img-small {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .about-img-small img {
+            width: 100%;
+            display: block;
+        }
+        
+        .experience-badge {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%) !important;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%) !important;
+        }
+        
+        .about-main-img {
+            transition: transform 0.3s ease;
+        }
+        
+        .about-main-img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .about-small-img {
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .about-small-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .about-small-img img {
+            transition: transform 0.3s ease;
+        }
+        
+        .about-small-img:hover img {
+            transform: scale(1.1);
+        }
+        
+        .about-content-new .lead {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .about-points {
+            margin: 40px 0;
+        }
+        
+        .point {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .point i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+        
+        .point h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .point p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* Programs New Section */
+        .programs-new {
+            padding: 100px 0;
+            background: var(--light);
+        }
+        
+        .programs-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 30px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark);
+        }
+        
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .programs-grid-new {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .program-card-new {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .program-card-new:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+        }
+        
+        .program-card-new.featured {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+        }
+        
+        .featured-tag {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .program-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .program-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: var(--secondary);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .program-card-new h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .program-card-new > p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .program-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .program-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .program-features i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .program-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .program-link:hover {
+            gap: 12px;
+        }
+        
+        .programs-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .programs-cta p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 25px;
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .stars {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-card > p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .testimonial-author h4 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+            color: var(--dark);
+        }
+        
+        .testimonial-author span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .about-img-small {
+                width: 200px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="wku.jpg" alt="Wolkite University Logo">
-                <h1>Wolkite <span>University</span></h1>
-            </div>
-            <div class="mobile-menu" id="mobileMenu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav>
-                <ul id="navMenu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#programs">Programs</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#contact">Contact</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="wku.jpg" alt="Wolkite University Logo" height="50" class="me-3">
+                <div>
+                    <h5 class="mb-0 fw-bold text-primary">Wolkite University</h5>
+                    <small class="text-muted">We Strive For Wisdom!</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#programs">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary btn-sm px-4" href="#apply">Apply Now</a>
+                    </li>
                 </ul>
-            </nav>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="hero-content">
-                <h2>Excellence in Education and Research</h2>
-                <p>Wolkite University is committed to providing quality higher education, fostering innovation, and contributing to national development through research and community engagement.</p>
-                <div class="hero-btns">
-                    <a href="#programs" class="btn">Explore Programs</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <div class="hero-badge mb-4">
+                        <i class="fas fa-award me-2"></i>
+                        <span>Ranked Top University in Ethiopia</span>
+                    </div>
+                    <h1 class="display-3 fw-bold mb-4">Transform Your Future at Wolkite University</h1>
+                    <p class="lead mb-4">Join thousands of students pursuing excellence in education, research, and innovation. Shape tomorrow's leaders today.</p>
+                    <div class="d-flex gap-3 mb-5 flex-wrap">
+                        <a href="#programs" class="btn btn-light btn-lg px-4">
+                            <span>Explore Programs</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg px-4">
+                            <i class="fas fa-phone me-2"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </div>
+                    <div class="row g-4 mt-3">
+                        <div class="col-4">
+                            <h2 class="display-5 fw-bold text-warning mb-0">15,000+</h2>
+                            <p class="mb-0">Students</p>
+                        </div>
+                        <div class="col-4">
+                            <h2 class="display-5 fw-bold text-warning mb-0">8</h2>
+                            <p class="mb-0">Colleges</p>
+                        </div>
+                        <div class="col-4">
+                            <h2 class="display-5 fw-bold text-warning mb-0">50+</h2>
+                            <p class="mb-0">Programs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="position-relative" style="height: 500px;">
+                        <div class="floating-card card-1 position-absolute">
+                            <i class="fas fa-graduation-cap fs-2 text-primary mb-2"></i>
+                            <h5 class="mb-0">Quality Education</h5>
+                        </div>
+                        <div class="floating-card card-2 position-absolute">
+                            <i class="fas fa-microscope fs-2 text-primary mb-2"></i>
+                            <h5 class="mb-0">Research Excellence</h5>
+                        </div>
+                        <div class="floating-card card-3 position-absolute">
+                            <i class="fas fa-users fs-2 text-primary mb-2"></i>
+                            <h5 class="mb-0">Global Community</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 text-center p-4 feature-card">
+                        <div class="feature-icon mx-auto mb-3">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">World-Class Curriculum</h5>
+                        <p class="text-muted mb-0">Industry-aligned programs designed to prepare you for global careers</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 text-center p-4 feature-card">
+                        <div class="feature-icon mx-auto mb-3">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Expert Faculty</h5>
+                        <p class="text-muted mb-0">Learn from experienced professors and industry professionals</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 text-center p-4 feature-card">
+                        <div class="feature-icon mx-auto mb-3">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Modern Facilities</h5>
+                        <p class="text-muted mb-0">State-of-the-art labs, libraries, and learning spaces</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 text-center p-4 feature-card">
+                        <div class="feature-icon mx-auto mb-3">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Global Network</h5>
+                        <p class="text-muted mb-0">International partnerships and exchange programs</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Wolkite University</h2>
-                <p>Established in 2007, Wolkite University is one of Ethiopia's leading higher education institutions dedicated to academic excellence and societal transformation.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Wolkite University was established in 2007 by the Ministry of Education of Ethiopia with the mission to produce competent graduates who can contribute to the socio-economic development of the country.</p>
-                    <p>The university is located in Wolkite town, Gurage Zone, Southern Nations, Nationalities, and Peoples' Region (SNNPR), approximately 158 kilometers south of Addis Ababa.</p>
-                    <p>Today, Wolkite University has grown to include 8 colleges, 3 institutes, and 2 schools offering a wide range of undergraduate and postgraduate programs in various fields of study.</p>
-                    <p>Our vision is to become a center of excellence in teaching, research, and community service that contributes to national development and global knowledge advancement.</p>
-                    <a href="#" class="btn" style="margin-top: 20px;">Learn More</a>
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <span class="badge bg-primary text-white px-3 py-2 rounded-pill mb-3">About Us</span>
+                    <h2 class="display-5 fw-bold mb-4">Building Ethiopia's Future Leaders Since 2007</h2>
+                    <p class="lead text-muted mb-4">Wolkite University stands as a beacon of academic excellence in Southern Ethiopia, committed to transforming lives through quality education.</p>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-check-circle text-info fs-4 me-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="fw-bold mb-2">Academic Excellence</h5>
+                                <p class="text-muted mb-0">Comprehensive programs across 8 colleges and multiple disciplines</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-check-circle text-info fs-4 me-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="fw-bold mb-2">Research Innovation</h5>
+                                <p class="text-muted mb-0">Cutting-edge research contributing to national development</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-check-circle text-info fs-4 me-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="fw-bold mb-2">Community Impact</h5>
+                                <p class="text-muted mb-0">Serving the region through outreach and engagement programs</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#programs" class="btn btn-primary btn-lg px-4">
+                        Discover More
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Wolkite University Campus">
+                
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <div class="position-relative">
+                        <!-- Main Image with Gradient Overlay -->
+                        <div class="rounded-4 overflow-hidden shadow-lg mb-4 position-relative about-main-img">
+                            <img src="wolkite.jpg" alt="Wolkite University Campus" class="img-fluid w-100" style="height: 400px; object-fit: cover;">
+                            <div class="position-absolute bottom-0 start-0 end-0 p-4 text-white" style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                                <h5 class="fw-bold mb-1">Wolkite University Campus</h5>
+                                <p class="mb-0 small">Modern facilities for world-class education</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Two Small Images Side by Side -->
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="rounded-3 overflow-hidden shadow-sm position-relative about-small-img">
+                                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400" alt="Students" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                                    <div class="position-absolute top-0 start-0 m-3">
+                                        <span class="badge bg-primary">
+                                            <i class="fas fa-users me-1"></i> Students
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="rounded-3 overflow-hidden shadow-sm position-relative about-small-img">
+                                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400" alt="Library" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                                    <div class="position-absolute top-0 start-0 m-3">
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-book me-1"></i> Library
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats Badge -->
+                        <div class="position-absolute bg-white rounded-3 shadow-lg p-3 text-center" style="top: 20px; right: 20px; z-index: 10;">
+                            <h3 class="fw-bold mb-0 text-primary">16+</h3>
+                            <small class="text-muted fw-semibold">Years</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Programs Section -->
-    <section id="programs" style="background-color: #f0f4f8;">
+    <section id="programs" class="programs-new">
         <div class="container">
-            <div class="section-header">
-                <h2>Academic Programs</h2>
-                <p>Wolkite University offers diverse academic programs across multiple disciplines designed to meet national development needs.</p>
+            <div class="section-header-new">
+                <span class="section-tag">Our Programs</span>
+                <h2>Explore Your Path to Success</h2>
+                <p>Choose from our diverse range of undergraduate and graduate programs</p>
             </div>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-img" style="background: #0d3b66;">
-                        <i class="fas fa-graduation-cap"></i>
+            
+            <div class="programs-tabs">
+                <button class="tab-btn active" data-tab="engineering">Engineering</button>
+                <button class="tab-btn" data-tab="sciences">Sciences</button>
+                <button class="tab-btn" data-tab="business">Business</button>
+                <button class="tab-btn" data-tab="humanities">Humanities</button>
+                <button class="tab-btn" data-tab="health">Health</button>
+            </div>
+
+            <div class="programs-grid-new">
+                <div class="program-card-new">
+                    <div class="program-icon">
+                        <i class="fas fa-cogs"></i>
                     </div>
-                    <div class="program-content">
-                        <h3>Engineering</h3>
-                        <p>Offering programs in Civil, Mechanical, Electrical, and Chemical Engineering with state-of-the-art laboratories and industry partnerships.</p>
-                        <a href="#" class="btn" style="margin-top: 15px;">View Details</a>
-                    </div>
+                    <span class="program-badge">4 Years</span>
+                    <h3>Civil Engineering</h3>
+                    <p>Design and build the infrastructure of tomorrow</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Accredited Program</li>
+                        <li><i class="fas fa-check"></i> Industry Projects</li>
+                        <li><i class="fas fa-check"></i> Modern Labs</li>
+                    </ul>
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="program-card">
-                    <div class="program-img" style="background: #2a9d8f;">
+
+                <div class="program-card-new">
+                    <div class="program-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="program-badge">4 Years</span>
+                    <h3>Electrical Engineering</h3>
+                    <p>Power the future with electrical innovation</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Hands-on Training</li>
+                        <li><i class="fas fa-check"></i> Research Opportunities</li>
+                        <li><i class="fas fa-check"></i> Career Support</li>
+                    </ul>
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="program-card-new featured">
+                    <div class="featured-tag">Most Popular</div>
+                    <div class="program-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <span class="program-badge">4 Years</span>
+                    <h3>Computer Science</h3>
+                    <p>Shape the digital world with cutting-edge technology</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> AI & Machine Learning</li>
+                        <li><i class="fas fa-check"></i> Software Development</li>
+                        <li><i class="fas fa-check"></i> Internship Programs</li>
+                    </ul>
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="program-card-new">
+                    <div class="program-icon">
                         <i class="fas fa-flask"></i>
                     </div>
-                    <div class="program-content">
-                        <h3>Natural Sciences</h3>
-                        <p>Comprehensive programs in Biology, Chemistry, Physics, Mathematics, and Environmental Science with research opportunities.</p>
-                        <a href="#" class="btn" style="margin-top: 15px;">View Details</a>
+                    <span class="program-badge">4 Years</span>
+                    <h3>Chemistry</h3>
+                    <p>Discover the science behind everything</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Advanced Labs</li>
+                        <li><i class="fas fa-check"></i> Research Projects</li>
+                        <li><i class="fas fa-check"></i> Industry Links</li>
+                    </ul>
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="program-card-new">
+                    <div class="program-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="program-badge">4 Years</span>
+                    <h3>Business Administration</h3>
+                    <p>Lead the business world with confidence</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Entrepreneurship</li>
+                        <li><i class="fas fa-check"></i> Global Business</li>
+                        <li><i class="fas fa-check"></i> Networking Events</li>
+                    </ul>
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="program-card-new">
+                    <div class="program-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <span class="program-badge">5 Years</span>
+                    <h3>Medicine</h3>
+                    <p>Heal and transform lives through healthcare</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Clinical Training</li>
+                        <li><i class="fas fa-check"></i> Modern Facilities</li>
+                        <li><i class="fas fa-check"></i> Expert Mentors</li>
+                    </ul>
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="programs-cta">
+                <p>Can't find what you're looking for?</p>
+                <a href="#" class="btn btn-outline-large">View All Programs</a>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header-new">
+                <span class="section-tag">Student Stories</span>
+                <h2>What Our Students Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Wolkite University transformed my life. The quality of education and support from faculty is exceptional."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="Student">
+                        <div>
+                            <h4>Abebe Kebede</h4>
+                            <span>Engineering Graduate</span>
+                        </div>
                     </div>
                 </div>
-                <div class="program-card">
-                    <div class="program-img" style="background: #ee964b;">
-                        <i class="fas fa-book"></i>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <div class="program-content">
-                        <h3>Humanities & Social Sciences</h3>
-                        <p>Programs in History, Geography, Sociology, Psychology, and Languages fostering critical thinking and cultural understanding.</p>
-                        <a href="#" class="btn" style="margin-top: 15px;">View Details</a>
+                    <p>"The research opportunities and modern facilities helped me excel in my field. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=5" alt="Student">
+                        <div>
+                            <h4>Marshet Tesfa</h4>
+                            <span>Computer Science Student</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best decision I ever made. The university prepared me well for my career in the medical field."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=8" alt="Student">
+                        <div>
+                            <h4>Dawit Tesfaye</h4>
+                            <span>Medical Student</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- News Section -->
-    <section id="news">
+    <!-- CTA Section -->
+    <section class="cta-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Latest News & Events</h2>
-                <p>Stay updated with the latest developments, achievements, and events at Wolkite University.</p>
-            </div>
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="news-img"></div>
-                    <div class="news-content">
-                        <span class="news-date">June 15, 2023</span>
-                        <h3>Wolkite University Signs MoU with International Partner</h3>
-                        <p>The university has signed a memorandum of understanding with a leading European university to enhance research collaboration.</p>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-img"></div>
-                    <div class="news-content">
-                        <span class="news-date">May 28, 2023</span>
-                        <h3>Graduation Ceremony for Class of 2023</h3>
-                        <p>Over 2,500 students graduated in the 16th commencement ceremony held at the main campus stadium.</p>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-img"></div>
-                    <div class="news-content">
-                        <span class="news-date">May 10, 2023</span>
-                        <h3>New Research Center Established</h3>
-                        <p>The university inaugurated a new center for agricultural research focusing on sustainable farming practices.</p>
-                    </div>
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join thousands of students building their future at Wolkite University</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-white">Apply Now</a>
+                    <a href="#" class="btn btn-outline-white">Download Brochure</a>
                 </div>
             </div>
         </div>
@@ -779,33 +1934,50 @@ overflow: hidden;
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navMenu = document.getElementById('navMenu');
-        
-        mobileMenu.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
-        });
-        
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                navMenu.classList.remove('show');
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
         
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
-                navMenu.classList.remove('show');
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
             }
         });
+        
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards
+        document.querySelectorAll('.feature-card, .program-card-new, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
     </script>
-</body>
-
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>
