@@ -5,55 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HTML: Tables</title>
   <style>
-    body { font-family: Arial; max-width: 800px; margin: 20px auto; padding: 0 20px; }
-    header { text-align: center; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #f39c12; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 12px;
-      text-align: left;
+    caption {
+      font-size: 24px;
+      font-weight: bold;
+      color: #171b2c;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    thead {
+      background: linear-gradient(135deg, #303650 0%, #77747a 100%);
+      color: white;
     }
     th {
-      background-color: #fef0d9;
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #f0f0f0;
+      color: #333;
+    }
+    tbody tr {
+      transition: all 0.3s ease;
+    }
+    tbody tr:hover {
+      background-color: #f8f9ff;
+      transform: scale(1.01);
+    }
+    tbody tr:nth-child(even) {
+      background-color: #fafbff;
+    }
+    tfoot {
+      background: linear-gradient(135deg, #89868a 0%, #ac9ea0 100%);
+      color: white;
       font-weight: bold;
     }
-    tr:nth-child(even) {
-      background-color: #fdf6f0;
+    tfoot td {
+      padding: 15px;
+      border: none;
     }
   </style>
 </head>
 <body>
   <table>
-    <caption>Student Grades</caption>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Course</th>
-        <th>Grade</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Zelalem Tesfa</td>
-        <td>Web Development</td>
-        <td>A+</td>
-      </tr>
-      <tr>
-        <td>Abdlmejid Kasim</td>
-        <td>Database Systems</td>
-        <td>B+</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="2">Average</td>
-        <td>B+</td>
-      </tr>
-    </tfoot>
+      <caption><i>Student Grades<i/></caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Zelalem Tesfa</td>
+          <td>Web Development</td>
+          <td>A+</td>
+        </tr>
+        <tr>
+          <td>Abdlmejid Kasim</td>
+          <td>Database Systems</td>
+          <td>B+</td>
+        </tr>
+        <tr>
+          <td>Sara Ahmed</td>
+          <td>Mobile App Development</td>
+          <td>A+</td>
+        </tr>
+        <tr>
+          <td>Mohammed Ali</td>
+          <td>Data Structures</td>
+          <td>B+</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Average</td>
+          <td>A-</td>
+        </tr>
+      </tfoot>
   </table>
 </body>
 </html>
