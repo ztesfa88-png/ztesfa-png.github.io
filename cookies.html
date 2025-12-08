@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Cookies - Lab Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .hero {
+            background-color: #34495e;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .container-main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-card {
+            background: white;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            padding: 25px;
+        }
+
+        .section-card h2 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+
+        .section-card h3 {
+            color: #34495e;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background-color: #ecf0f1;
+            border-left: 3px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            border-radius: 3px;
+        }
+
+        .output-box {
+            background-color: #e8f8f5;
+            border-left: 3px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            min-height: 40px;
+        }
+
+        .btn-demo {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            margin: 5px 5px 5px 0;
+            transition: background-color 0.3s;
+        }
+
+        .btn-demo:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #e74c3c;
+        }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+        }
+
+        .btn-success:hover {
+            background-color: #229954;
+        }
+
+        .example-box {
+            background-color: #fef9e7;
+            border-left: 3px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+
+        .example-box strong {
+            color: #d68910;
+        }
+
+        .cookie-item {
+            padding: 10px;
+            margin: 8px 0;
+            background: white;
+            border-left: 3px solid #3498db;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .input-group-demo {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .input-group-demo input {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .note {
+            background-color: #d6eaf8;
+            border-left: 3px solid #3498db;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 3px;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        ul, ol {
+            margin: 10px 0 10px 20px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .section-card {
+                padding: 15px;
+            }
+            .input-group-demo {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🍪 JavaScript Cookies</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#what">What are Cookies?</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#create">Create</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#read">Read</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#update">Update</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#delete">Delete</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#examples">Examples</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>JavaScript Cookies Tutorial</h1>
+        <p>Learn how to create, read, update, and delete cookies</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container-main">
+
+        <!-- What are Cookies -->
+        <div class="section-card" id="what">
+            <h2>What are Cookies?</h2>
+            <p>Cookies are small files stored on the user's browser that can store data. They are sent with every HTTP request to the server.</p>
+            
+            <div class="example-box">
+                <strong>Key Points:</strong>
+                <ul>
+                    <li>Maximum size: 4KB per cookie</li>
+                    <li>Can store up to 180 cookies per domain</li>
+                    <li>Sent automatically with every request</li>
+                    <li>Can have expiration dates</li>
+                    <li>Can be deleted by users</li>
+                </ul>
+            </div>
+
+            <h3>Cookie Syntax:</h3>
+            <div class="code-block">document.cookie = "name=value; expires=date; path=/";</div>
+
+            <div class="note">
+                <strong>Note:</strong> Never store sensitive information like passwords or credit card numbers in cookies!
+            </div>
+        </div>
+
+        <!-- 1. CREATE COOKIES -->
+        <div class="section-card" id="create">
+            <h2>1. Creating Cookies</h2>
+            <p>Create a new cookie with a name, value, and expiration date.</p>
+            
+            <h3>Code Example:</h3>
+            <div class="code-block">function createCookie() {
+    const name = "username";
+    const value = "JohnDoe";
+    const days = 7;
+    
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}</div>
+
+            <h3>Try it:</h3>
+            <div class="input-group-demo">
+                <input type="text" id="cookieName" placeholder="Cookie Name" value="username">
+                <input type="text" id="cookieValue" placeholder="Cookie Value" value="JohnDoe">
+                <input type="number" id="cookieDays" placeholder="Days" value="7" min="1">
+                <button class="btn-demo" onclick="createCookie()">Create Cookie</button>
+            </div>
+
+            <div class="output-box" id="output-create" style="display:none;">
+                <span id="create-output"></span>
+            </div>
+        </div>
+
+        <!-- 2. READ COOKIES -->
+        <div class="section-card" id="read">
+            <h2>2. Reading Cookies</h2>
+            <p>Read and display cookies stored in the browser.</p>
+            
+            <h3>Code Example:</h3>
+            <div class="code-block">function getCookie(name) {
+    const nameEQ = name + "=";
+    const cookies = document.cookie.split(';');
+    
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.indexOf(nameEQ) === 0) {
+            return cookie.substring(nameEQ.length);
+        }
+    }
+    return null;
+}</div>
+
+            <h3>Try it:</h3>
+            <button class="btn-demo" onclick="displayAllCookies()">Show All Cookies</button>
+            <button class="btn-demo" onclick="readSpecificCookie()">Read 'username' Cookie</button>
+            
+            <div class="output-box" id="cookieList" style="display:none;">
+                <span id="list-output"></span>
+            </div>
+        </div>
+
+        <!-- 3. UPDATE COOKIES -->
+        <div class="section-card" id="update">
+            <h2>3. Updating Cookies</h2>
+            <p>Update a cookie by creating a new one with the same name.</p>
+            
+            <h3>Code Example:</h3>
+            <div class="code-block">function updateCookie(name, newValue, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + newValue + ";" + expires + ";path=/";
+}</div>
+
+            <h3>Try it:</h3>
+            <div class="input-group-demo">
+                <input type="text" id="updateName" placeholder="Cookie Name" value="username">
+                <input type="text" id="updateValue" placeholder="New Value" value="JaneDoe">
+                <button class="btn-demo btn-success" onclick="updateCookie()">Update Cookie</button>
+            </div>
+
+            <div class="output-box" id="output-update" style="display:none;">
+                <span id="update-output"></span>
+            </div>
+        </div>
+
+        <!-- 4. DELETE COOKIES -->
+        <div class="section-card" id="delete">
+            <h2>4. Deleting Cookies</h2>
+            <p>Delete a cookie by setting its expiration date to the past.</p>
+            
+            <h3>Code Example:</h3>
+            <div class="code-block">function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}</div>
+
+            <h3>Try it:</h3>
+            <div class="input-group-demo">
+                <input type="text" id="deleteName" placeholder="Cookie Name to Delete" value="username">
+                <button class="btn-demo btn-delete" onclick="deleteCookie()">Delete Cookie</button>
+                <button class="btn-demo btn-delete" onclick="deleteAllCookies()">Delete All Cookies</button>
+            </div>
+
+            <div class="output-box" id="output-delete" style="display:none;">
+                <span id="delete-output"></span>
+            </div>
+        </div>
+
+        <!-- EXAMPLES -->
+        <div class="section-card" id="examples">
+            <h2>Quick Examples</h2>
+            
+            <h3>Example 1: Multiple Cookies</h3>
+            <p>Create several cookies at once for user information.</p>
+            <button class="btn-demo" onclick="createMultipleCookies()">Create Multiple Cookies</button>
+
+            <h3 style="margin-top: 20px;">Example 2: Session Cookie</h3>
+            <p>Create a cookie that expires when the browser closes.</p>
+            <button class="btn-demo" onclick="createSessionCookie()">Create Session Cookie</button>
+
+            <h3 style="margin-top: 20px;">Example 3: Cookie Count</h3>
+            <p>Check how many cookies are stored.</p>
+            <button class="btn-demo" onclick="showCookieCount()">Show Cookie Count</button>
+
+            <div class="output-box" id="output-examples" style="display:none;">
+                <span id="examples-output"></span>
+            </div>
+        </div>
+
+        <!-- BEST PRACTICES -->
+        <div class="section-card">
+            <h2>Best Practices</h2>
+            
+            <div class="example-box">
+                <strong>Security:</strong>
+                <ul>
+                    <li>Never store passwords or sensitive data</li>
+                    <li>Use HTTPS to prevent interception</li>
+                    <li>Set HttpOnly flag on server-side</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <strong>Performance:</strong>
+                <ul>
+                    <li>Keep cookies small (< 4KB)</li>
+                    <li>Don't create too many cookies</li>
+                    <li>Clean up expired cookies</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <strong>Privacy:</strong>
+                <ul>
+                    <li>Inform users about cookies</li>
+                    <li>Allow users to opt-out</li>
+                    <li>Respect user preferences</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>JavaScript Cookies Tutorial - Lab</strong></p>
+        <p>Zelalem Tesfa | NRS/0868/16</p>
+        <p>Wolkite University</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="cookies.js"></script>
+    <script>
+        // Display functions for the tutorial
+
+        function showOutput(elementId, message) {
+            const output = document.getElementById(elementId);
+            const span = output.querySelector('span');
+            span.textContent = message;
+            output.style.display = 'block';
+        }
+
+        // Override createCookie to show output
+        const originalCreateCookie = window.createCookie;
+        window.createCookie = function() {
+            originalCreateCookie();
+            showOutput('output-create', 'Cookie created successfully! Check "Show All Cookies" to see it.');
+        };
+
+        // Override displayAllCookies
+        const originalDisplayAllCookies = window.displayAllCookies;
+        window.displayAllCookies = function() {
+            const output = document.getElementById('cookieList');
+            const span = output.querySelector('span');
+            
+            if (document.cookie === '') {
+                span.textContent = 'No cookies found';
+            } else {
+                const cookies = document.cookie.split(';');
+                let html = '<strong>All Cookies:</strong><br>';
+                cookies.forEach(function(cookie) {
+                    const trimmed = cookie.trim();
+                    if (trimmed) {
+                        html += '<div class="cookie-item">' + trimmed + '</div>';
+                    }
+                });
+                span.innerHTML = html;
+            }
+            output.style.display = 'block';
+        };
+
+        // Override readSpecificCookie
+        const originalReadSpecificCookie = window.readSpecificCookie;
+        window.readSpecificCookie = function() {
+            const value = getCookie('username');
+            const output = document.getElementById('cookieList');
+            const span = output.querySelector('span');
+            
+            if (value) {
+                span.innerHTML = '<div class="cookie-item"><strong>Found:</strong> username = ' + value + '</div>';
+            } else {
+                span.innerHTML = '<div class="cookie-item"><strong>Not Found:</strong> "username" cookie does not exist</div>';
+            }
+            output.style.display = 'block';
+        };
+
+        // Update cookie function
+        function updateCookie() {
+            const name = document.getElementById('updateName').value;
+            const value = document.getElementById('updateValue').value;
+            
+            if (!name || !value) {
+                alert('Please enter both name and value');
+                return;
+            }
+            
+            const date = new Date();
+            date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            
+            showOutput('output-update', 'Cookie "' + name + '" updated to "' + value + '"');
+        }
+
+        // Override deleteCookie
+        const originalDeleteCookie = window.deleteCookie;
+        window.deleteCookie = function() {
+            const name = document.getElementById('deleteName').value;
+            if (!name) {
+                alert('Please enter a cookie name');
+                return;
+            }
+            originalDeleteCookie();
+            showOutput('output-delete', 'Cookie "' + name + '" deleted!');
+        };
+
+        // Show cookie count
+        function showCookieCount() {
+            const count = document.cookie === '' ? 0 : document.cookie.split(';').length;
+            showOutput('output-examples', 'Total cookies: ' + count);
+        }
+    </script>
+</body>
+</html>
