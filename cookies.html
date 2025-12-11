@@ -12,15 +12,11 @@
             background-color: #f5f5f5;
             color: #333;
         }
-
-
-
         .container-main {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 15px;
         }
-
         .section-card {
             background: white;
             border-left: 4px solid #3498db;
@@ -29,7 +25,6 @@
             margin-bottom: 25px;
             padding: 25px;
         }
-
         .section-card h2 {
             color: #2c3e50;
             font-size: 1.6rem;
@@ -38,7 +33,6 @@
             border-bottom: 2px solid #ecf0f1;
             padding-bottom: 10px;
         }
-
         .section-card h3 {
             color: #34495e;
             font-size: 1.2rem;
@@ -46,7 +40,6 @@
             margin-top: 20px;
             margin-bottom: 10px;
         }
-
         .code-block {
             background-color: #ecf0f1;
             border-left: 3px solid #3498db;
@@ -57,7 +50,6 @@
             overflow-x: auto;
             border-radius: 3px;
         }
-
         .output-box {
             background-color: #e8f8f5;
             border-left: 3px solid #27ae60;
@@ -67,7 +59,6 @@
             font-family: 'Courier New', monospace;
             min-height: 40px;
         }
-
         .btn-demo {
             background-color: #3498db;
             color: white;
@@ -79,28 +70,22 @@
             margin: 5px 5px 5px 0;
             transition: background-color 0.3s;
         }
-
         .btn-demo:hover {
             background-color: #2980b9;
             color: white;
         }
-
         .btn-delete {
             background-color: #e74c3c;
         }
-
         .btn-delete:hover {
             background-color: #c0392b;
         }
-
         .btn-success {
             background-color: #27ae60;
         }
-
         .btn-success:hover {
             background-color: #229954;
         }
-
         .example-box {
             background-color: #fef9e7;
             border-left: 3px solid #f39c12;
@@ -108,11 +93,9 @@
             margin: 15px 0;
             border-radius: 3px;
         }
-
         .example-box strong {
             color: #d68910;
         }
-
         .cookie-item {
             padding: 10px;
             margin: 8px 0;
@@ -122,21 +105,18 @@
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
         }
-
         .input-group-demo {
             margin: 15px 0;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
-
         .input-group-demo input {
             padding: 8px 12px;
             border: 1px solid #bdc3c7;
             border-radius: 3px;
             font-family: 'Courier New', monospace;
         }
-
         .note {
             background-color: #d6eaf8;
             border-left: 3px solid #3498db;
@@ -145,15 +125,12 @@
             border-radius: 3px;
             font-size: 0.95rem;
         }
-
         ul, ol {
             margin: 10px 0 10px 20px;
         }
-
         li {
             margin: 5px 0;
         }
-
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 1.8rem;
@@ -168,15 +145,12 @@
     </style>
 </head>
 <body>
-
     <!-- Main Content -->
     <div class="container-main">
-
         <!-- What are Cookies -->
         <div class="section-card" id="what">
             <h2>What are Cookies?</h2>
             <p>Cookies are small files stored on the user's browser that can store data. They are sent with every HTTP request to the server.</p>
-            
             <div class="example-box">
                 <strong>Key Points:</strong>
                 <ul>
@@ -187,33 +161,25 @@
                     <li>Can be deleted by users</li>
                 </ul>
             </div>
-
             <h3>Cookie Syntax:</h3>
             <div class="code-block">document.cookie = "name=value; expires=date; path=/";</div>
-
-            <div class="note">
-                <strong>Note:</strong> Never store sensitive information like passwords or credit card numbers in cookies!
-            </div>
+            <div class="note"><strong>Note:</strong> Never store sensitive information like passwords or credit card numbers in cookies!</div>
         </div>
 
         <!-- 1. CREATE COOKIES -->
         <div class="section-card" id="create">
             <h2>1. Creating Cookies</h2>
             <p>Create a new cookie with a name, value, and expiration date.</p>
-            
             <h3>Code Example:</h3>
             <div class="code-block">function createCookie() {
     const name = "username";
     const value = "Zelalem";
     const days = 7;
-    
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
-    
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }</div>
-
             <h3>Try it:</h3>
             <div class="input-group-demo">
                 <input type="text" id="cookieName" placeholder="Cookie Name" value="username">
@@ -221,22 +187,17 @@
                 <input type="number" id="cookieDays" placeholder="Days" value="7" min="1">
                 <button class="btn-demo" onclick="createCookie()">Create Cookie</button>
             </div>
-
-            <div class="output-box" id="output-create" style="display:none;">
-                <span id="create-output"></span>
-            </div>
+            <div class="output-box" id="output-create" style="display:none;"><span id="create-output"></span></div>
         </div>
 
         <!-- 2. READ COOKIES -->
         <div class="section-card" id="read">
             <h2>2. Reading Cookies</h2>
             <p>Read and display cookies stored in the browser.</p>
-            
             <h3>Code Example:</h3>
             <div class="code-block">function getCookie(name) {
     const nameEQ = name + "=";
     const cookies = document.cookie.split(';');
-    
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim();
         if (cookie.indexOf(nameEQ) === 0) {
@@ -245,21 +206,16 @@
     }
     return null;
 }</div>
-
             <h3>Try it:</h3>
             <button class="btn-demo" onclick="displayAllCookies()">Show All Cookies</button>
             <button class="btn-demo" onclick="readSpecificCookie()">Read 'username' Cookie</button>
-            
-            <div class="output-box" id="cookieList" style="display:none;">
-                <span id="list-output"></span>
-            </div>
+            <div class="output-box" id="cookieList" style="display:none;"><span id="list-output"></span></div>
         </div>
 
         <!-- 3. UPDATE COOKIES -->
         <div class="section-card" id="update">
             <h2>3. Updating Cookies</h2>
             <p>Update a cookie by creating a new one with the same name.</p>
-            
             <h3>Code Example:</h3>
             <div class="code-block">function updateCookie(name, newValue, days) {
     const date = new Date();
@@ -267,66 +223,35 @@
     const expires = "expires=" + date.toUTCString();
     document.cookie = name + "=" + newValue + ";" + expires + ";path=/";
 }</div>
-
             <h3>Try it:</h3>
             <div class="input-group-demo">
                 <input type="text" id="updateName" placeholder="Cookie Name" value="username">
                 <input type="text" id="updateValue" placeholder="New Value" value="Zelalem">
                 <button class="btn-demo btn-success" onclick="updateCookie()">Update Cookie</button>
             </div>
-
-            <div class="output-box" id="output-update" style="display:none;">
-                <span id="update-output"></span>
-            </div>
+            <div class="output-box" id="output-update" style="display:none;"><span id="update-output"></span></div>
         </div>
 
         <!-- 4. DELETE COOKIES -->
         <div class="section-card" id="delete">
             <h2>4. Deleting Cookies</h2>
             <p>Delete a cookie by setting its expiration date to the past.</p>
-            
             <h3>Code Example:</h3>
             <div class="code-block">function deleteCookie(name) {
     document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }</div>
-
             <h3>Try it:</h3>
             <div class="input-group-demo">
                 <input type="text" id="deleteName" placeholder="Cookie Name to Delete" value="username">
                 <button class="btn-demo btn-delete" onclick="deleteCookie()">Delete Cookie</button>
                 <button class="btn-demo btn-delete" onclick="deleteAllCookies()">Delete All Cookies</button>
             </div>
-
-            <div class="output-box" id="output-delete" style="display:none;">
-                <span id="delete-output"></span>
-            </div>
-        </div>
-
-        <!-- EXAMPLES -->
-        <div class="section-card" id="examples">
-            <h2>Quick Examples</h2>
-            
-            <h3>Example 1: Multiple Cookies</h3>
-            <p>Create several cookies at once for user information.</p>
-            <button class="btn-demo" onclick="createMultipleCookies()">Create Multiple Cookies</button>
-
-            <h3 style="margin-top: 20px;">Example 2: Session Cookie</h3>
-            <p>Create a cookie that expires when the browser closes.</p>
-            <button class="btn-demo" onclick="createSessionCookie()">Create Session Cookie</button>
-
-            <h3 style="margin-top: 20px;">Example 3: Cookie Count</h3>
-            <p>Check how many cookies are stored.</p>
-            <button class="btn-demo" onclick="showCookieCount()">Show Cookie Count</button>
-
-            <div class="output-box" id="output-examples" style="display:none;">
-                <span id="examples-output"></span>
-            </div>
+            <div class="output-box" id="output-delete" style="display:none;"><span id="delete-output"></span></div>
         </div>
 
         <!-- BEST PRACTICES -->
         <div class="section-card">
             <h2>Best Practices</h2>
-            
             <div class="example-box">
                 <strong>Security:</strong>
                 <ul>
@@ -335,7 +260,6 @@
                     <li>Set HttpOnly flag on server-side</li>
                 </ul>
             </div>
-
             <div class="example-box">
                 <strong>Performance:</strong>
                 <ul>
@@ -344,7 +268,6 @@
                     <li>Clean up expired cookies</li>
                 </ul>
             </div>
-
             <div class="example-box">
                 <strong>Privacy:</strong>
                 <ul>
@@ -354,15 +277,12 @@
                 </ul>
             </div>
         </div>
-
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="cookies.js"></script>
     <script>
         // Display functions for the tutorial
-
         function showOutput(elementId, message) {
             const output = document.getElementById(elementId);
             const span = output.querySelector('span');
@@ -382,7 +302,6 @@
         window.displayAllCookies = function() {
             const output = document.getElementById('cookieList');
             const span = output.querySelector('span');
-            
             if (document.cookie === '') {
                 span.textContent = 'No cookies found';
             } else {
@@ -405,7 +324,6 @@
             const value = getCookie('username');
             const output = document.getElementById('cookieList');
             const span = output.querySelector('span');
-            
             if (value) {
                 span.innerHTML = '<div class="cookie-item"><strong>Found:</strong> username = ' + value + '</div>';
             } else {
@@ -418,17 +336,14 @@
         function updateCookie() {
             const name = document.getElementById('updateName').value;
             const value = document.getElementById('updateValue').value;
-            
             if (!name || !value) {
                 alert('Please enter both name and value');
                 return;
             }
-            
             const date = new Date();
             date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
             const expires = "expires=" + date.toUTCString();
             document.cookie = name + "=" + value + ";" + expires + ";path=/";
-            
             showOutput('output-update', 'Cookie "' + name + '" updated to "' + value + '"');
         }
 
@@ -443,12 +358,6 @@
             originalDeleteCookie();
             showOutput('output-delete', 'Cookie "' + name + '" deleted!');
         };
-
-        // Show cookie count
-        function showCookieCount() {
-            const count = document.cookie === '' ? 0 : document.cookie.split(';').length;
-            showOutput('output-examples', 'Total cookies: ' + count);
-        }
     </script>
 </body>
 </html>
