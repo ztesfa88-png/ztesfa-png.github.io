@@ -160,10 +160,8 @@
 </head>
 <body>
 
-    <!-- Main Content -->
     <div class="container-main">
 
-        <!-- 1. Hello World -->
         <div class="section-card" id="hello">
             <h2>1. Hello World</h2>
             <p>The simplest JavaScript program that displays a message.</p>
@@ -179,7 +177,6 @@
             </div>
         </div>
 
-        <!-- 2. Script Placement -->
         <div class="section-card" id="placement">
             <h2>2. Script Placement</h2>
             <p>JavaScript code can be placed in different locations within an HTML document.</p>
@@ -202,7 +199,6 @@
             </div>
         </div>
 
-        <!-- 3. Functions and Buttons -->
         <div class="section-card" id="functions">
             <h2>3. Functions and Buttons</h2>
             <p>Functions are reusable blocks of code that perform specific tasks.</p>
@@ -219,7 +215,6 @@
             <button class="btn-demo" onclick="greetUser()">Greet Me</button>
         </div>
 
-        <!-- 4. Identifiers and Variables -->
         <div class="section-card" id="variables">
             <h2>4. Identifiers and Variables</h2>
             <p>Variables are containers for storing data values.</p>
@@ -244,8 +239,7 @@ var y;</div>
                 <span id="vars-output"></span>
             </div>
         </div>
-
-        <!-- 5. Operators -->
+        
         <div class="section-card" id="operators">
             <h2>5. Operators</h2>
             <p>Operators are used to perform operations on variables and values.</p>
@@ -270,8 +264,7 @@ document.write(x++ * ++y + y + x);</div>
                 <span id="ops-output"></span>
             </div>
         </div>
-
-        <!-- 6. Conditional Statements -->
+        
         <div class="section-card" id="conditionals">
             <h2>6. Conditional Statements</h2>
             <p>Use if/else statements to execute code based on conditions.</p>
@@ -296,7 +289,7 @@ if(variable1 > variable2) {
             </div>
         </div>
 
-        <!-- 7. Switch Case -->
+    
         <div class="section-card" id="switch">
             <h2>7. Switch Case</h2>
             <p>Use switch statements to execute different code blocks based on different conditions.</p>
@@ -320,8 +313,7 @@ switch(x) {
                 <span id="switch-output"></span>
             </div>
         </div>
-
-        <!-- 8. Strings -->
+        
         <div class="section-card" id="strings">
             <h2>8. Strings</h2>
             <p>Strings are sequences of characters enclosed in quotes.</p>
@@ -348,7 +340,7 @@ var escaped = "He said \"Hello\"";</div>
             </div>
         </div>
 
-        <!-- 9. Arrays -->
+
         <div class="section-card" id="arrays">
             <h2>9. Arrays</h2>
             <p>Arrays store multiple values in a single variable.</p>
@@ -370,7 +362,7 @@ colors[2] = "pink";</div>
             </div>
         </div>
 
-        <!-- 10. Loops -->
+       
         <div class="section-card" id="loops">
             <h2>10. Loops</h2>
             <p>Loops execute code repeatedly.</p>
@@ -405,7 +397,6 @@ colors[2] = "pink";</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Display functions for the tutorial
 
         function showOutput(elementId, message) {
             const output = document.getElementById(elementId);
@@ -414,12 +405,10 @@ colors[2] = "pink";</div>
             output.style.display = 'block';
         }
 
-        // 1. Hello World
         function helloWorld() {
             showOutput('output-hello', 'Javascript says "Hello World!"');
         }
 
-        // 3. Functions
         function sayHello() {
             alert("Hello World");
         }
@@ -431,7 +420,6 @@ colors[2] = "pink";</div>
             }
         }
 
-        // 4. Variables
         function demonstrateVariables() {
             let x = 2.50;
             let taxRate = 0.075;
@@ -439,7 +427,6 @@ colors[2] = "pink";</div>
             showOutput('output-vars', 'x = ' + x + ', taxRate = ' + taxRate + ', y = ' + y);
         }
 
-        // 5. Operators
         function demonstrateOperators() {
             let x = 3;
             let y = 10;
@@ -447,7 +434,6 @@ colors[2] = "pink";</div>
             showOutput('output-ops', 'x=3, y=10 → Result = ' + result);
         }
 
-        // 6. Conditionals
         function demonstrateConditionals() {
             let variable1 = 1;
             let variable2 = 2;
@@ -465,7 +451,6 @@ colors[2] = "pink";</div>
             showOutput('output-cond', result);
         }
 
-        // 7. Switch Case
         function demonstrateSwitch() {
             let x = Number(document.getElementById('switchInput').value);
             let result = "";
@@ -479,14 +464,12 @@ colors[2] = "pink";</div>
             showOutput('output-switch', 'Input: ' + x + ' → Result: ' + result);
         }
 
-        // 8. Strings
         function demonstrateStrings() {
             let greeting = "Hello World";
             let result = '"' + greeting + '" | Length: ' + greeting.length + ' | Uppercase: ' + greeting.toUpperCase();
             showOutput('output-strings', result);
         }
 
-        // 9. Arrays
         function demonstrateArrays() {
             let colors = ["green", "red", "yellow", "orange", "blue"];
             colors[2] = "pink";
@@ -494,7 +477,6 @@ colors[2] = "pink";</div>
             showOutput('output-arrays', result);
         }
 
-        // 10. Loops - Simple
         function demonstrateSimpleLoop() {
             let table = document.getElementById('table1');
             table.innerHTML = '<tr>';
@@ -505,7 +487,6 @@ colors[2] = "pink";</div>
             document.getElementById('output-loop1').style.display = 'block';
         }
 
-        // 10. Loops - Nested
         function demonstrateNestedLoop() {
             let table = document.getElementById('table2');
             table.innerHTML = '';
